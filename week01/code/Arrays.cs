@@ -8,13 +8,20 @@ public static class Arrays
     /// <returns>array of doubles that are the multiples of the supplied number</returns>
     public static double[] MultiplesOf(double number, int length)
     {
-        // TODO Problem 1 Start
-        // Remember: Using comments in your program, write down your process for solving this problem
-        // step by step before you write the code. The plan should be clear enough that it could
-        // be implemented by another person.
+        // Create an array of doubles with the size specified by 'length'
+        var result = new double[length];
 
-        return []; // replace this return statement with your own
+        // Loop from 1 to 'length' inclusive, this to calculate each multiple
+        for (var i = 1; i <= length; i++)
+        {
+            // Multiply 'number' by the current loop index 'i' to get the next multiple
+            // Store it in the array at index 'i - 1' because array indexing starts at 0
+            result[i - 1] = number * i;
+        }
+        // Return the array containing all the multiples.
+        return result;
     }
+
 
     /// <summary>
     /// Rotate the 'data' to the right by the 'amount'.  For example, if the data is 
@@ -25,9 +32,26 @@ public static class Arrays
     /// </summary>
     public static void RotateListRight(List<int> data, int amount)
     {
-        // TODO Problem 2 Start
-        // Remember: Using comments in your program, write down your process for solving this problem
-        // step by step before you write the code. The plan should be clear enough that it could
-        // be implemented by another person.
+        // Make sure the rotation is not bigger than the list
+        amount = amount % data.Count;
+
+        // If amount is 0, no rotation is needed
+        if (amount == 0)
+            return;
+
+        // Take the last 'amount' elements to move to the front
+        List<int> endSlice = data.GetRange(data.Count - amount, amount);
+
+        // Take the first part of the list (everything else)
+        List<int> startSlice = data.GetRange(0, data.Count - amount);
+
+        // Clear the original list so we can rebuild it
+        data.Clear();
+
+        // Add the last elements first (they move to the front)
+        data.AddRange(endSlice);
+
+        // Add the first elements after
+        data.AddRange(startSlice);
     }
 }
