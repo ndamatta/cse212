@@ -1,4 +1,7 @@
-﻿public class DuplicateCounter
+﻿using System.Security.Principal;
+using System.Threading.Tasks.Dataflow;
+
+public class DuplicateCounter
 {
     //Count how many duplicates are in a collection of data.
 
@@ -24,7 +27,7 @@
 
     private static int CountDuplicates(int[] data)
     {
-        // Add code here.
-        return 0;
+        var unique = new HashSet<int>(data);
+        return data.Length - unique.Count;
     }
 }
