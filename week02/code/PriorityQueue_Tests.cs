@@ -42,7 +42,11 @@ public class PriorityQueueTests
     [TestMethod]
     // Scenario: Test tie-breaking - when priorities are equal, return the one closest to front
     // Expected Result: "First" then "Second" (both priority 5, but "First" was added first)
-    // Defect(s) Found: 
+    // Defect(s) Found:
+    // 1. In PriorityQueue.Dequeue, the for loop's condition caused it to skip the last item in the queue.
+    // 2. In PriorityQueue.Dequeue, the dequeued item was not being removed from the queue.
+    // 3. In PriorityQueue.Dequeue, the comparison for determining the highest priority was incorrect, affecting FIFO order.
+
     public void TestPriorityQueue_3()
     {
         var priorityQueue = new PriorityQueue();
