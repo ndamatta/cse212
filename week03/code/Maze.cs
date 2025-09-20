@@ -32,7 +32,19 @@ public class Maze
     /// </summary>
     public void MoveLeft()
     {
-        // FILL IN CODE
+        var directions = _mazeMap[(_currX, _currY)];
+        if (!directions[0])
+        {
+            throw new InvalidOperationException("Can't go that way!");
+        }
+
+        var newX = _currX - 1;
+        if (!_mazeMap.ContainsKey((newX, _currY)))
+        {
+            throw new InvalidOperationException("Can't go that way!");
+        }
+
+        _currX = newX;
     }
 
     /// <summary>
@@ -41,7 +53,19 @@ public class Maze
     /// </summary>
     public void MoveRight()
     {
-        // FILL IN CODE
+        var directions = _mazeMap[(_currX, _currY)];
+        if (!directions[1])
+        {
+            throw new InvalidOperationException("Can't go that way!");
+        }
+
+        var newX = _currX + 1;
+        if (!_mazeMap.ContainsKey((newX, _currY)))
+        {
+            throw new InvalidOperationException("Can't go that way!");
+        }
+
+        _currX = newX;
     }
 
     /// <summary>
@@ -50,7 +74,19 @@ public class Maze
     /// </summary>
     public void MoveUp()
     {
-        // FILL IN CODE
+        var directions = _mazeMap[(_currX, _currY)];
+        if (!directions[2])
+        {
+            throw new InvalidOperationException("Can't go that way!");
+        }
+
+        var newY = _currY - 1;
+        if (!_mazeMap.ContainsKey((_currX, newY)))
+        {
+            throw new InvalidOperationException("Can't go that way!");
+        }
+
+        _currY = newY;
     }
 
     /// <summary>
@@ -59,7 +95,19 @@ public class Maze
     /// </summary>
     public void MoveDown()
     {
-        // FILL IN CODE
+        var directions = _mazeMap[(_currX, _currY)];
+        if (!directions[3])
+        {
+            throw new InvalidOperationException("Can't go that way!");
+        }
+
+        var newY = _currY + 1;
+        if (!_mazeMap.ContainsKey((_currX, newY)))
+        {
+            throw new InvalidOperationException("Can't go that way!");
+        }
+
+        _currY = newY;
     }
 
     public string GetStatus()
